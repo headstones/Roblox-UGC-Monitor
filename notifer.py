@@ -4,7 +4,8 @@ import time
 import discord
 from discord import Webhook, RequestsWebhookAdapter
 # the holy grail of  variables
-discordWebhook = "https://discord.com/api/webhooks/968006471856033852/oaHh2XSbw8_DYCCf8Br5dKbF-GzelWukNDW2nodXjS4F2tLHKPASKmhs4wq07uKGLJhn"
+discordWebhook = "https://discord.com/api/webhooks... webhook stuff" # ONLY ONE U NEED TO CHANGE 
+####### dont touch anything below this unless you are the owner of a working brain 
 API = "https://catalog.roblox.com/v1/search/items?category=CommunityCreations&limit=10&sortType=3&subcategory=CommunityCreations"
 thumbanil ="https://www.roblox.com/asset-thumbnail/image?assetId=26769281&width=420&height=420&format=png"
 infourl = "https://api.roblox.com/marketplace/productinfo?assetId="
