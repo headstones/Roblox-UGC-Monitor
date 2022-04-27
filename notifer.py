@@ -1,6 +1,4 @@
-from ast import Pass, Return
 import requests
-import json
 import time
 import discord
 from discord import Webhook, RequestsWebhookAdapter
