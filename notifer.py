@@ -7,14 +7,13 @@ discordWebhook = "https://discord.com/api/webhooks... webhook stuff" # ONLY THIN
 ################################################################################################
 ################# DONT TOUCH ANYTHING BELOW THIS UNLESS U HAVE A WORKING BRAIN #################
 API = "https://catalog.roblox.com/v1/search/items?category=CommunityCreations&limit=10&sortType=3&subcategory=CommunityCreations"
-TAPI = "https://catalog.roblox.com/v1/search/items?category=3&limit=10&sortType=3&subcategory=55"
 infourl = "https://api.roblox.com/marketplace/productinfo?assetId="
 webhook = Webhook.from_url(discordWebhook, adapter=RequestsWebhookAdapter())
-olddata = requests.get(TAPI).json()
+olddata = requests.get(API).json()
 print("Scanning the roblox catalog..")
 while True: # a shitty while true loop because i am a noob
     time.sleep(5)
-    newdata = requests.get(TAPI).json()
+    newdata = requests.get(API).json()
     if newdata != olddata:
         print("Catalog update detected!")
         olddata = newdata
