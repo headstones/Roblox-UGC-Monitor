@@ -1,8 +1,4 @@
 from ast import Pass, Return
-import code
-from email import message
-from tracemalloc import start
-from turtle import goto
 import requests
 import json
 import time
