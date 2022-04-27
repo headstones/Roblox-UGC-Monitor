@@ -1,3 +1,8 @@
+from ast import Pass, Return
+import code
+from email import message
+from tracemalloc import start
+from turtle import goto
 import requests
 import json
 import time
@@ -8,13 +13,14 @@ discordWebhook = "https://discord.com/api/webhooks... webhook stuff" # ONLY THIN
 ################################################################################################
 ################# DONT TOUCH ANYTHING BELOW THIS UNLESS U HAVE A WORKING BRAIN #################
 API = "https://catalog.roblox.com/v1/search/items?category=CommunityCreations&limit=10&sortType=3&subcategory=CommunityCreations"
+TAPI = "https://catalog.roblox.com/v1/search/items?category=3&limit=10&sortType=3&subcategory=55"
 infourl = "https://api.roblox.com/marketplace/productinfo?assetId="
 webhook = Webhook.from_url(discordWebhook, adapter=RequestsWebhookAdapter())
-olddata = requests.get(API).json()
+olddata = requests.get(TAPI).json()
 print("Scanning the roblox catalog..")
 while True: # a shitty while true loop because i am a noob
     time.sleep(5)
-    newdata = requests.get(API).json()
+    newdata = requests.get(TAPI).json()
     if newdata != olddata:
         print("Catalog update detected!")
         olddata = newdata
@@ -45,7 +51,12 @@ while True: # a shitty while true loop because i am a noob
             Embed.add_field(name="Item Price", value=itemprice, inline=True)
             Embed.set_thumbnail(url=thumbnail)
             webhook.send(embed=Embed)
+    try:
+        if newdata["error"] or newdata["data"] == [] or newdata["data"] == None:
+            print("Roblox errored!")
+            pass
+    except:
+        pass
     else:
-        continue
-# if something breaks keep the window open
-input("Press enter to exit")
+        print("No new items found")
+        pass
