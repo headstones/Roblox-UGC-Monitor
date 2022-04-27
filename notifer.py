@@ -7,7 +7,6 @@ from discord import Webhook, RequestsWebhookAdapter
 discordWebhook = "https://discord.com/api/webhooks... webhook stuff" # ONLY ONE U NEED TO CHANGE 
 ####### dont touch anything below this unless you are the owner of a working brain 
 API = "https://catalog.roblox.com/v1/search/items?category=CommunityCreations&limit=10&sortType=3&subcategory=CommunityCreations"
-thumbanil ="https://www.roblox.com/asset-thumbnail/image?assetId=26769281&width=420&height=420&format=png"
 infourl = "https://api.roblox.com/marketplace/productinfo?assetId="
 webhook = Webhook.from_url(discordWebhook, adapter=RequestsWebhookAdapter())
 olddata = requests.get(API).json()
@@ -29,12 +28,12 @@ while True:
             # webhook stuff
             itemname = iteminfo["Name"]
             itemprice = iteminfo["PriceInRobux"]
-            thumbnailicon = f"https://www.roblox.com/asset-thumbnail/image?assetId={itemid}&width=420&height=420&format=png"
+            thumbnail = f"https://www.roblox.com/asset-thumbnail/image?assetId={itemid}&width=420&height=420&format=png"
             itemlink = "https://www.roblox.com/catalog/" + str(itemid)
             Embed = discord.Embed(title="New UGC accessory detected!", description=f"https://www.roblox.com/catalog/{itemid}", color=0x00ff00)
             Embed.add_field(name="Item Name", value=itemname, inline=True)
             Embed.add_field(name="Item Price", value=itemprice, inline=True)
-            Embed.set_thumbnail(url=thumbnailicon)
+            Embed.set_thumbnail(url=thumbnail)
             webhook.send(embed=Embed)
         else:
             print(f"{itemid} created at {createddate}, updated at {updatedate} is not new :(")
