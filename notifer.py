@@ -12,7 +12,7 @@ webhook = Webhook.from_url(discordWebhook, adapter=RequestsWebhookAdapter())
 olddata = requests.get(API).json()
 print("Scanning the roblox catalog..")
 while True: # a shitty while true loop because i am a noob
-    time.sleep(5)
+    time.sleep(10)
     newdata = requests.get(API).json()
     if newdata != olddata:
         print("Catalog update detected!")
@@ -21,7 +21,7 @@ while True: # a shitty while true loop because i am a noob
         iteminfo = requests.get(infourl + str(itemid)).json()
         createddate = iteminfo["Created"]
         updatedate = iteminfo["Updated"]
-        if createddate[0:12] == updatedate[0:12]: #compares upload and update dates to see if it was updated in the past hour
+        if createddate[0:14] == updatedate[0:14]: #compares upload and update dates to see if it was updated in the past hour
             print(f"{itemid} is new, uploaded at {createddate}, updated at {updatedate}")
             # webhook stuff
             itemname = iteminfo["Name"]
